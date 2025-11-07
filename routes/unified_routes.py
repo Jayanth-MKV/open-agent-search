@@ -2,16 +2,25 @@
 Unified Search Routes - Search all sources at once
 """
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, Request, Response
 from models.schemas import SafeSearch, TimeLimit, UnifiedSearchResponse
 from controllers.unified_controller import search_all
 from typing import Optional
+from slowapi import Limiter
+from slowapi.util import get_remote_address
+from config import rate_limit_config
 
 router = APIRouter(prefix="/api/search", tags=["Unified Search"])
 
+# Initialize limiter for this router
+limiter = Limiter(key_func=get_remote_address)
+
 
 @router.get("/all", response_model=UnifiedSearchResponse)
+@limiter.limit(rate_limit_config.UNIFIED_SEARCH_LIMIT)
 async def unified_search_route(
+    request: Request,
+    response: Response,
     q: str = Query(..., description="Search query", min_length=1),
     region: str = Query("us-en", description="Region code (e.g., us-en, uk-en, in-en)"),
     safesearch: SafeSearch = Query(
@@ -29,6 +38,8 @@ async def unified_search_route(
     Search all sources (text, images, videos, news, books) at once in parallel.
     Returns results from all search types in a single response.
     Much faster than sequential searches!
+
+    Rate limit: 10 requests per minute per IP (production) - Resource intensive operation
     """
     results = await search_all(
         query=q,
