@@ -1,0 +1,8 @@
+[project]
+name = "ddgs-server"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "ddgs>=9.8.0",
+    "fastapi[standard]>=0.121.0",
+]
