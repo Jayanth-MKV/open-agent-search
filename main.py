@@ -51,7 +51,7 @@ limiter = Limiter(
 )
 
 # Create MCP ASGI app
-mcp_app = mcp.http_app(path="/mcp")
+mcp_app = mcp.http_app("/mcp")
 
 # Initialize FastAPI app with MCP lifespan
 app = FastAPI(
@@ -66,8 +66,13 @@ app = FastAPI(
 # Add rate limiter to app state
 app.state.limiter = limiter
 
+
 # Register rate limit exceeded handler
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+@app.exception_handler(RateLimitExceeded)
+async def rate_limit_handler(request: Request, exc: RateLimitExceeded):
+    """Custom handler for rate limit exceeded errors"""
+    return _rate_limit_exceeded_handler(request, exc)
+
 
 # Register routers
 app.include_router(text_router)
@@ -79,7 +84,7 @@ app.include_router(unified_router)
 app.include_router(content_router)
 
 # Mount MCP server
-app.mount("/", mcp_app)
+app.mount("/ai", mcp_app)
 
 
 # Root endpoint
