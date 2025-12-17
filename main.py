@@ -27,6 +27,7 @@ from routes.video_routes import router as video_router
 from routes.news_routes import router as news_router
 from routes.book_routes import router as book_router
 from routes.unified_routes import router as unified_router
+from routes.content_routes import router as content_router
 
 # Import models for exception handling
 from models.schemas import ErrorResponse
@@ -75,6 +76,7 @@ app.include_router(video_router)
 app.include_router(news_router)
 app.include_router(book_router)
 app.include_router(unified_router)
+app.include_router(content_router)
 
 # Mount MCP server
 app.mount("/", mcp_app)
@@ -96,6 +98,8 @@ async def root(request: Request, response: Response):
             "news_search": "/api/search/news",
             "book_search": "/api/search/books",
             "unified_search": "/api/search/all",
+            "fetch_content": "/api/content/fetch",
+            "fetch_multiple": "/api/content/fetch-multiple",
             "mcp_server": "/mcp",
             "documentation": "/docs",
         },

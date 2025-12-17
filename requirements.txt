@@ -2,3 +2,5 @@ ddgs>=9.8.0
 fastapi[standard]>=0.121.0
 slowapi>=0.1.9
 fastmcp>=2.14.1
+beautifulsoup4>=4.14.3
+httpx>=0.28.1

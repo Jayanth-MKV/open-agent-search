@@ -79,10 +79,11 @@ This server includes an integrated MCP (Model Context Protocol) server that prov
 - **search_news** - Search for news articles with time limits
 - **search_books** - Search for books
 - **search_everything** - Search all sources at once (parallel)
+- **fetch_content** - Extract content from a single URL
+- **fetch_multiple_contents** - Extract content from multiple URLs (max 10)
 
 ### Using MCP Server:
-The MCP server reuses all existing controller logic, making it efficient and maintainable. It's accessible at `/mcp` for LLM clients that support the MCP protocol.
-- **MCP Server**: http://localhost:8000/mcp
+The MCP server reuses all existing controller logic, making it efficient and maintainable. It's accessible at `/mcp/mcp` for LLM clients that support the MCP protocol.
 
 ---
 
@@ -112,6 +113,8 @@ The MCP server reuses all existing controller logic, making it efficient and mai
 | `/` | GET | API information |
 | `/health` | GET | Health check |
 | `/api/search/text` | GET | Web/text search |
+| `/api/content/fetch` | GET | Fetch content from URL |
+| `/api/content/fetch-multiple` | POST | Fetch content from multiple URLs |
 | `/api/search/images` | GET | Image search |
 | `/api/search/videos` | GET | Video search |
 | `/api/search/news` | GET | News search |
@@ -217,6 +220,50 @@ curl "http://localhost:8000/api/search/news?q=technology&timelimit=w&max_results
 **Example**:
 ```bash
 curl "http://localhost:8000/api/search/books?q=machine%20learning&max_results=15"
+```
+
+---
+
+### 6. Content Fetching
+
+**Endpoint**: `GET /api/content/fetch`
+
+**Parameters**:
+- `url` (required): URL to fetch content from
+- `timeout` (optional): Request timeout 5-30 seconds (default: 10)
+
+**Example**:
+```bash
+curl "http://localhost:8000/api/content/fetch?url=https://example.com/article"
+```
+
+**Response**:
+```json
+{
+  "url": "https://example.com/article",
+  "title": "Article Title",
+  "description": "Meta description",
+  "content": "Main article text...",
+  "content_length": 5420,
+  "status_code": 200
+}
+```
+
+**Endpoint**: `POST /api/content/fetch-multiple`
+
+**Body**:
+```json
+{
+  "urls": ["https://example.com/page1", "https://example.com/page2"],
+  "timeout": 10
+}
+```
+
+**Example**:
+```bash
+curl -X POST "http://localhost:8000/api/content/fetch-multiple" \
+  -H "Content-Type: application/json" \
+  -d '{"urls": ["https://example.com/article1", "https://example.com/article2"]}'
 ```
 
 ---

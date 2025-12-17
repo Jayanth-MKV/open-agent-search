@@ -19,6 +19,7 @@ from controllers.video_controller import search_videos as controller_search_vide
 from controllers.news_controller import search_news as controller_search_news
 from controllers.book_controller import search_books as controller_search_books
 from controllers.unified_controller import search_all
+from controllers.content_controller import fetch_url_content, fetch_multiple_urls
 
 # Create MCP server
 mcp = FastMCP("DDGS Search Tools")
@@ -194,3 +195,48 @@ async def search_everything(
         safesearch=SafeSearch(safesearch),
         max_results_per_type=min(max_results_per_type, 20),
     )
+
+
+@mcp.tool()
+async def fetch_content(
+    url: str, timeout: int = 10, max_length: int = 2000
+) -> Dict[str, Any]:
+    """
+    Fetch and extract content from a URL with intelligent trimming (non-blocking).
+
+    Args:
+        url: URL to fetch content from (required)
+        timeout: Request timeout in seconds, 5-30 (default: 10)
+        max_length: Maximum content length in characters, 100-20000 (default: 2000)
+
+    Returns:
+        Extracted content with title, description, and intelligently trimmed text
+    """
+    return await fetch_url_content(
+        url=url,
+        timeout=min(max(timeout, 5), 30),
+        max_length=min(max(max_length, 100), 20000),
+    )
+
+
+@mcp.tool()
+async def fetch_multiple_contents(
+    urls: List[str], timeout: int = 10, max_length: int = 2000
+) -> Dict[str, Any]:
+    """
+    Fetch and extract content from multiple URLs in parallel (max 10, non-blocking).
+
+    Args:
+        urls: List of URLs to fetch (required, max 10)
+        timeout: Request timeout in seconds, 5-30 (default: 10)
+        max_length: Maximum content length per URL, 100-20000 (default: 2000)
+
+    Returns:
+        Dictionary with list of extracted content from each URL
+    """
+    results = await fetch_multiple_urls(
+        urls=urls[:10],
+        timeout=min(max(timeout, 5), 30),
+        max_length=min(max(max_length, 100), 20000),
+    )
+    return {"results": results, "count": len(results)}
