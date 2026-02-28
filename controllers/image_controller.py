@@ -48,7 +48,7 @@ def search_images(
         HTTPException: On various error conditions
     """
     try:
-        logger.info(f"Image search: query='{query}', max_results={max_results}")
+        logger.info("Image search: query=%r, max_results=%d", query, max_results)
 
         ddgs = DDGS(timeout=10)
         results = ddgs.images(

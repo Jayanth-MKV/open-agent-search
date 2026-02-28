@@ -40,7 +40,7 @@ def search_text(
         HTTPException: On various error conditions
     """
     try:
-        logger.info(f"Text search: query='{query}', max_results={max_results}")
+        logger.info("Text search: query=%r, max_results=%d", query, max_results)
 
         ddgs = DDGS(timeout=10)
         results = ddgs.text(

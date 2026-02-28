@@ -46,7 +46,7 @@ def search_videos(
         HTTPException: On various error conditions
     """
     try:
-        logger.info(f"Video search: query='{query}', max_results={max_results}")
+        logger.info("Video search: query=%r, max_results=%d", query, max_results)
 
         ddgs = DDGS(timeout=10)
         results = ddgs.videos(
