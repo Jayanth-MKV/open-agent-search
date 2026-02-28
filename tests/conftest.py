@@ -1,4 +1,4 @@
-"""Shared pytest fixtures for DDGS Server tests."""
+"""Shared pytest fixtures for Open Agent Search tests."""
 
 import pytest
 from fastapi.testclient import TestClient

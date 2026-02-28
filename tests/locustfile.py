@@ -1,5 +1,5 @@
 """
-Locust Load Testing Configuration for DDGS Server
+Locust Load Testing Configuration for Open Agent Search
 Stress test your rate-limited API with realistic usage patterns
 
 Run with:

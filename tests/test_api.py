@@ -1,4 +1,4 @@
-"""Smoke tests for the DDGS Server API."""
+"""Smoke tests for the Open Agent Search API."""
 
 
 def test_root(client):
@@ -6,7 +6,7 @@ def test_root(client):
     response = client.get("/")
     assert response.status_code == 200
     data = response.json()
-    assert data["message"] == "DDGS Metasearch API"
+    assert data["message"] == "Open Agent Search Metasearch API"
     assert "endpoints" in data
 
 
