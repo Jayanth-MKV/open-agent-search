@@ -1,11 +1,52 @@
-.vercel/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.whl
+
+# Virtual environments
 .venv/
 venv/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# OS files
+Thumbs.db
 .DS_Store
-.env*
-uv.lock
+
+# Testing & coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.pytest_cache/
+.mypy_cache/
+
+# Locust reports
+locust_report_*.html
+
+# Deployment
+.vercel/
+
+# Python build
+.Python
+
+# MkDocs
+site/

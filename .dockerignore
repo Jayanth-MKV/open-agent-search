@@ -1,0 +1,24 @@
+# Ignore Python/build artifacts in Docker image
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+.env.*
+.git/
+.github/
+.idea/
+.vscode/
+*.swp
+Thumbs.db
+.DS_Store
+tests/
+scripts/
+htmlcov/
+.coverage
+.pytest_cache/
+.mypy_cache/
+locust_report_*.html
