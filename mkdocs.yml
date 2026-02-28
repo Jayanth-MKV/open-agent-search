@@ -1,0 +1,119 @@
+site_name: DDGS Server
+site_url: https://jayanth-mkv.github.io/ddgs-server
+site_description: A production-ready metasearch REST API and MCP server powered by DuckDuckGo Search
+site_author: Jayanth-MKV
+repo_url: https://github.com/Jayanth-MKV/ddgs-server
+repo_name: Jayanth-MKV/ddgs-server
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2024–2026 Jayanth-MKV
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.betterem
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Jayanth-MKV/ddgs-server
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/ddgs-server/
+  generator: false
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quickstart.md
+  - MCP Integration:
+      - Overview: mcp/index.md
+      - Claude Desktop: mcp/claude-desktop.md
+      - Claude Code: mcp/claude-code.md
+      - Cursor: mcp/cursor.md
+      - VS Code: mcp/vscode.md
+      - Windsurf: mcp/windsurf.md
+      - Other Clients: mcp/other-clients.md
+  - API Reference:
+      - Endpoints: api/endpoints.md
+      - MCP Tools: api/mcp-tools.md
+  - Deployment:
+      - Docker: deployment/docker.md
+      - Vercel: deployment/vercel.md
+  - Contributing: contributing.md
