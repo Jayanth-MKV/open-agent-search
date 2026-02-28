@@ -96,55 +96,55 @@ Plug Open Agent Search into any MCP-compatible client — or call the REST API d
 
 <div class="grid cards" markdown>
 
-- :material-download:{ .lg .middle } **Install in 30 Seconds**
+-   :material-download:{ .lg .middle } **Install in 30 Seconds**
 
-  ***
+    ---
 
-  Zero-install with `uvx` — wire into any MCP client instantly. No clone, no pip install.
+    Zero-install with `uvx` — wire into any MCP client instantly. No clone, no pip install.
 
-  [:octicons-arrow-right-24: Getting started](getting-started/installation.md)
+    [:octicons-arrow-right-24: Getting started](getting-started/installation.md)
 
-- :material-api:{ .lg .middle } **Full REST API**
+-   :material-api:{ .lg .middle } **Full REST API**
 
-  ***
+    ---
 
-  Search text, images, videos, news, books — all from one API with interactive Swagger docs.
+    Search text, images, videos, news, books — all from one API with interactive Swagger docs.
 
-  [:octicons-arrow-right-24: API reference](api/endpoints.md)
+    [:octicons-arrow-right-24: API reference](api/endpoints.md)
 
-- :material-robot:{ .lg .middle } **MCP Server**
+-   :material-robot:{ .lg .middle } **MCP Server**
 
-  ***
+    ---
 
-  8 tools for Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, OpenClaw & more.
+    8 tools for Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, OpenClaw & more.
 
-  [:octicons-arrow-right-24: MCP setup guides](mcp/index.md)
+    [:octicons-arrow-right-24: MCP setup guides](mcp/index.md)
 
-- :material-rocket-launch:{ .lg .middle } **One-Click Deploy**
+-   :material-rocket-launch:{ .lg .middle } **One-Click Deploy**
 
-  ***
+    ---
 
-  Deploy to Vercel or Docker in seconds. Production-ready out of the box.
+    Deploy to Vercel or Docker in seconds. Production-ready out of the box.
 
-  [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FJayanth-MKV%2Fopen-agent-search&project-name=open-agent-search&repository-name=open-agent-search)
+    [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FJayanth-MKV%2Fopen-agent-search&project-name=open-agent-search&repository-name=open-agent-search)
 
-  [:octicons-arrow-right-24: Deployment guide](deployment/vercel.md)
+    [:octicons-arrow-right-24: Deployment guide](deployment/vercel.md)
 
-- :material-shield-check:{ .lg .middle } **Privacy First**
+-   :material-shield-check:{ .lg .middle } **Privacy First**
 
-  ***
+    ---
 
-  Powered by DuckDuckGo. No tracking, no API keys required, no data collection. SSRF protection built-in.
+    Powered by DuckDuckGo. No tracking, no API keys required, no data collection. SSRF protection built-in.
 
-  [:octicons-arrow-right-24: Learn more](getting-started/quickstart.md)
+    [:octicons-arrow-right-24: Learn more](getting-started/quickstart.md)
 
-- :material-hook:{ .lg .middle } **OpenClaw Compatible**
+-   :material-hook:{ .lg .middle } **OpenClaw Compatible**
 
-  ***
+    ---
 
-  Works as an OpenClaw skill — give your lobster assistant the power of search.
+    Works as an OpenClaw skill — give your lobster assistant the power of search.
 
-  [:octicons-arrow-right-24: OpenClaw guide](mcp/openclaw.md)
+    [:octicons-arrow-right-24: OpenClaw guide](mcp/openclaw.md)
 
 </div>
 

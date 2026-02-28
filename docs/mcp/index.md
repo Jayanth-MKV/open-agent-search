@@ -19,47 +19,47 @@ This uses [`uvx`](https://docs.astral.sh/uv/concepts/tools/) to run the server d
 
 <div class="grid cards" markdown>
 
-- :simple-anthropic:{ .lg .middle } **Claude Desktop**
+-   :simple-anthropic:{ .lg .middle } **Claude Desktop**
 
-  ***
+    ---
 
-  [:octicons-arrow-right-24: Setup guide](claude-desktop.md)
+    [:octicons-arrow-right-24: Setup guide](claude-desktop.md)
 
-- :octicons-terminal-16:{ .lg .middle } **Claude Code**
+-   :octicons-terminal-16:{ .lg .middle } **Claude Code**
 
-  ***
+    ---
 
-  [:octicons-arrow-right-24: Setup guide](claude-code.md)
+    [:octicons-arrow-right-24: Setup guide](claude-code.md)
 
-- :material-cursor-default-click:{ .lg .middle } **Cursor**
+-   :material-cursor-default-click:{ .lg .middle } **Cursor**
 
-  ***
+    ---
 
-  [:octicons-arrow-right-24: Setup guide](cursor.md)
+    [:octicons-arrow-right-24: Setup guide](cursor.md)
 
-- :material-microsoft-visual-studio-code:{ .lg .middle } **VS Code / Copilot**
+-   :material-microsoft-visual-studio-code:{ .lg .middle } **VS Code / Copilot**
 
-  ***
+    ---
 
-  [:octicons-arrow-right-24: Setup guide](vscode.md)
+    [:octicons-arrow-right-24: Setup guide](vscode.md)
 
-- :material-weather-windy:{ .lg .middle } **Windsurf**
+-   :material-weather-windy:{ .lg .middle } **Windsurf**
 
-  ***
+    ---
 
-  [:octicons-arrow-right-24: Setup guide](windsurf.md)
+    [:octicons-arrow-right-24: Setup guide](windsurf.md)
 
-- :material-hook:{ .lg .middle } **OpenClaw**
+-   :material-hook:{ .lg .middle } **OpenClaw**
 
-  ***
+    ---
 
-  [:octicons-arrow-right-24: Setup guide](openclaw.md)
+    [:octicons-arrow-right-24: Setup guide](openclaw.md)
 
-- :material-dots-horizontal:{ .lg .middle } **Other Clients**
+-   :material-dots-horizontal:{ .lg .middle } **Other Clients**
 
-  ***
+    ---
 
-  [:octicons-arrow-right-24: Generic guide](other-clients.md)
+    [:octicons-arrow-right-24: Generic guide](other-clients.md)
 
 </div>
 
