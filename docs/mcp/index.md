@@ -49,7 +49,7 @@ This uses [`uvx`](https://docs.astral.sh/uv/concepts/tools/) to run the server d
 
   [:octicons-arrow-right-24: Setup guide](windsurf.md)
 
-- :material-crab:{ .lg .middle } **OpenClaw**
+- :material-hook:{ .lg .middle } **OpenClaw**
 
   ***
 
