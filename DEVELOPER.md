@@ -16,9 +16,9 @@ uv sync --dev --group docs   # everything: runtime + dev + docs
 
 ```bash
 # Run server (pick one)
-uv run ddgs-server                                              # production
-uv run uvicorn ddgs_server.app:app --reload --host 0.0.0.0 --port 8000  # dev w/ hot reload
-uv run ddgs-mcp                                                 # MCP stdio only
+uv run open-agent-search                                              # production
+uv run uvicorn open_agent_search.app:app --reload --host 0.0.0.0 --port 8000  # dev w/ hot reload
+uv run oas-mcp                                                 # MCP stdio only
 
 # Lint & format
 uv run ruff check .              # lint
@@ -40,7 +40,7 @@ uv run locust -f tests/locustfile.py --host=http://localhost:8000 \
 
 ## Docs (GitHub Pages)
 
-Site: `https://jayanth-mkv.github.io/ddgs-server/`
+Site: `https://jayanth-mkv.github.io/open-agent-search/`
 
 ```bash
 # Install docs deps (first time)
@@ -91,7 +91,7 @@ docker compose up -d             # build + run
 docker compose logs -f           # tail logs
 docker compose down              # stop
 docker compose watch             # dev mode (live sync)
-docker build -t ddgs-server .    # manual build
+docker build -t open-agent-search .    # manual build
 ```
 
 ---

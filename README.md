@@ -21,17 +21,17 @@ The **sensory organ** for the AI agent ecosystem. An independent, privacy-first 
 
 ```bash
 # Works instantly — no clone or install needed
-uvx --from clawsearch clawsearch-mcp
+uvx --from open-agent-search oas-mcp
 ```
 
 ### Install & Run
 
 ```bash
 # Install from PyPI
-uv pip install clawsearch
+uv pip install open-agent-search
 
 # Start the HTTP API + MCP server
-clawsearch
+open-agent-search
 # → http://localhost:8000 (API)
 # → http://localhost:8000/ai/mcp (MCP)
 ```
@@ -39,10 +39,10 @@ clawsearch
 ### From Source
 
 ```bash
-git clone https://github.com/Jayanth-MKV/clawsearch.git
-cd clawsearch
+git clone https://github.com/Jayanth-MKV/open-agent-search.git
+cd open-agent-search
 uv sync
-uv run clawsearch
+uv run open-agent-search
 ```
 
 ### Docker
@@ -68,22 +68,22 @@ docker compose up -d
 
 ## MCP Client Setup
 
-> **[Full setup guides →](https://jayanth-mkv.github.io/clawsearch/mcp/)**
+> **[Full setup guides →](https://jayanth-mkv.github.io/open-agent-search/mcp/)**
 
 Add to any MCP client with `uvx` — zero install:
 
 ```json
 {
   "mcpServers": {
-    "clawsearch": {
+    "open-agent-search": {
       "command": "uvx",
-      "args": ["--from", "clawsearch", "clawsearch-mcp"]
+      "args": ["--from", "open-agent-search", "oas-mcp"]
     }
   }
 }
 ```
 
-Guides available for: **Claude Desktop** · **Claude Code** · **Cursor** · **VS Code** · **Windsurf** · **OpenClaw** · [and more](https://jayanth-mkv.github.io/clawsearch/mcp/other-clients/)
+Guides available for: **Claude Desktop** · **Claude Code** · **Cursor** · **VS Code** · **Windsurf** · **OpenClaw** · [and more](https://jayanth-mkv.github.io/open-agent-search/mcp/other-clients/)
 
 ---
 
@@ -101,19 +101,19 @@ Guides available for: **Claude Desktop** · **Claude Code** · **Cursor** · **V
 | `/api/content/fetch-multiple` | POST   | Fetch content from multiple URLs   |
 | `/ai/mcp`                     | —      | MCP server endpoint                |
 
-> **[Full API reference →](https://jayanth-mkv.github.io/clawsearch/api/endpoints/)**
+> **[Full API reference →](https://jayanth-mkv.github.io/open-agent-search/api/endpoints/)**
 
 ---
 
 ## Documentation
 
-- [Installation](https://jayanth-mkv.github.io/clawsearch/getting-started/installation/)
-- [Quick Start](https://jayanth-mkv.github.io/clawsearch/getting-started/quickstart/)
-- [MCP Integration](https://jayanth-mkv.github.io/clawsearch/mcp/)
-- [API Reference](https://jayanth-mkv.github.io/clawsearch/api/endpoints/)
-- [Docker Deployment](https://jayanth-mkv.github.io/clawsearch/deployment/docker/)
-- [Vercel Deployment](https://jayanth-mkv.github.io/clawsearch/deployment/vercel/)
-- [Contributing](https://jayanth-mkv.github.io/clawsearch/contributing/)
+- [Installation](https://jayanth-mkv.github.io/open-agent-search/getting-started/installation/)
+- [Quick Start](https://jayanth-mkv.github.io/open-agent-search/getting-started/quickstart/)
+- [MCP Integration](https://jayanth-mkv.github.io/open-agent-search/mcp/)
+- [API Reference](https://jayanth-mkv.github.io/open-agent-search/api/endpoints/)
+- [Docker Deployment](https://jayanth-mkv.github.io/open-agent-search/deployment/docker/)
+- [Vercel Deployment](https://jayanth-mkv.github.io/open-agent-search/deployment/vercel/)
+- [Contributing](https://jayanth-mkv.github.io/open-agent-search/contributing/)
 
 ## Contributing
 

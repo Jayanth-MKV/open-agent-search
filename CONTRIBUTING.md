@@ -1,4 +1,4 @@
-# Contributing to DDGS Server
+# Contributing to Open Agent Search
 
 Thanks for your interest in contributing! Here's how to get started.
 
@@ -6,8 +6,8 @@ Thanks for your interest in contributing! Here's how to get started.
 
 ```bash
 # Clone the repository
-git clone https://github.com/Jayanth-MKV/ddgs-server.git
-cd ddgs-server
+git clone https://github.com/Jayanth-MKV/open-agent-search.git
+cd open-agent-search
 
 # Install uv (if you haven't already)
 # https://docs.astral.sh/uv/getting-started/installation/
@@ -20,10 +20,10 @@ uv sync --dev
 ## Running the Server
 
 ```bash
-uv run ddgs-server
+uv run open-agent-search
 
 # With hot reload for development
-uv run uvicorn ddgs_server.app:app --reload --host 0.0.0.0 --port 8000
+uv run uvicorn open_agent_search.app:app --reload --host 0.0.0.0 --port 8000
 ```
 
 ## Running Tests
@@ -63,7 +63,7 @@ uv add --group dev <package>
 
 ## Reporting Issues
 
-- Use [GitHub Issues](https://github.com/Jayanth-MKV/ddgs-server/issues).
+- Use [GitHub Issues](https://github.com/Jayanth-MKV/open-agent-search/issues).
 - Include steps to reproduce, expected behaviour, and actual behaviour.
 - Mention your Python version and OS.
 
