@@ -80,14 +80,14 @@ Privacy-first, unfiltered search for every AI agent. 8 search tools accessible v
 
 Plug Open Agent Search into any MCP-compatible client — or call the REST API directly.
 
-<div class="clients-grid">
-  <span>:simple-anthropic: Claude Desktop</span>
-  <span>:octicons-terminal-16: Claude Code</span>
-  <span>:material-cursor-default-click: Cursor</span>
-  <span>:material-microsoft-visual-studio-code: VS Code</span>
-  <span>:material-weather-windy: Windsurf</span>
-  <span>:material-crab: OpenClaw</span>
-  <span>:material-dots-horizontal: Any MCP Client</span>
+<div class="clients-grid" markdown>
+  <span markdown="span">:simple-anthropic: Claude Desktop</span>
+  <span markdown="span">:octicons-terminal-16: Claude Code</span>
+  <span markdown="span">:material-cursor-default-click: Cursor</span>
+  <span markdown="span">:material-microsoft-visual-studio-code: VS Code</span>
+  <span markdown="span">:material-weather-windy: Windsurf</span>
+  <span markdown="span">:material-hook: OpenClaw</span>
+  <span markdown="span">:material-dots-horizontal: Any MCP Client</span>
 </div>
 
 [:octicons-arrow-right-24: See all MCP setup guides](mcp/index.md){ .md-button }
@@ -138,7 +138,7 @@ Plug Open Agent Search into any MCP-compatible client — or call the REST API d
 
   [:octicons-arrow-right-24: Learn more](getting-started/quickstart.md)
 
-- :material-crab:{ .lg .middle } **OpenClaw Compatible**
+- :material-hook:{ .lg .middle } **OpenClaw Compatible**
 
   ***
 
