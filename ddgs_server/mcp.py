@@ -1,28 +1,27 @@
-"""
-MCP Server for DDGS Search API
-Provides LLM-friendly search tools using FastMCP
-"""
+"""MCP Server for ClawSearch — provides LLM-friendly search tools via FastMCP."""
+
+from typing import Any, Dict, List, Optional
 
 from fastmcp import FastMCP
-from typing import Optional, List, Dict, Any
-from models.schemas import (
+
+from .controllers.book import search_books as controller_search_books
+from .controllers.content import fetch_multiple_urls, fetch_url_content
+from .controllers.image import search_images as controller_search_images
+from .controllers.news import search_news as controller_search_news
+from .controllers.text import search_text as controller_search_text
+from .controllers.unified import search_all
+from .controllers.video import search_videos as controller_search_videos
+from .models.schemas import (
+    ImageColor,
+    ImageSize,
     SafeSearch,
     TimeLimit,
-    ImageSize,
-    ImageColor,
-    VideoResolution,
     VideoDuration,
+    VideoResolution,
 )
-from controllers.text_controller import search_text as controller_search_text
-from controllers.image_controller import search_images as controller_search_images
-from controllers.video_controller import search_videos as controller_search_videos
-from controllers.news_controller import search_news as controller_search_news
-from controllers.book_controller import search_books as controller_search_books
-from controllers.unified_controller import search_all
-from controllers.content_controller import fetch_url_content, fetch_multiple_urls
 
 # Create MCP server
-mcp = FastMCP("DDGS Search Tools", stateless_http=True)
+mcp = FastMCP("ClawSearch Tools", stateless_http=True)
 
 
 @mcp.tool()
@@ -72,7 +71,8 @@ def search_images(
         max_results: Maximum results, 1-100 (default: 10)
         safesearch: Safe search: 'on', 'moderate', 'off' (default: 'moderate')
         size: Image size filter: 'small', 'medium', 'large', 'wallpaper'
-        color: Color filter: 'color', 'monochrome', 'red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'brown', 'black', 'gray', 'teal', 'white'
+        color: Color filter: 'color', 'monochrome', 'red', 'orange', 'yellow',
+            'green', 'blue', 'purple', 'pink', 'brown', 'black', 'gray', 'teal', 'white'
 
     Returns:
         List of images with title, image url, thumbnail, source, and more
@@ -198,9 +198,7 @@ async def search_everything(
 
 
 @mcp.tool()
-async def fetch_content(
-    url: str, timeout: int = 10, max_length: int = 2000
-) -> Dict[str, Any]:
+async def fetch_content(url: str, timeout: int = 10, max_length: int = 2000) -> Dict[str, Any]:
     """
     Fetch and extract content from a URL with intelligent trimming (non-blocking).
 
@@ -240,3 +238,8 @@ async def fetch_multiple_contents(
         max_length=min(max(max_length, 100), 20000),
     )
     return {"results": results, "count": len(results)}
+
+
+def main():
+    """CLI entry point: run the MCP server over stdio (for Claude Desktop / Cursor)."""
+    mcp.run(transport="stdio")

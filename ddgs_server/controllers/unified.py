@@ -2,16 +2,16 @@
 Unified Search Controller - searches all sources at once in parallel
 """
 
-import logging
 import asyncio
-from typing import Optional, Dict, Any
-from concurrent.futures import ThreadPoolExecutor
-from models.schemas import SafeSearch, TimeLimit
-from controllers.text_controller import search_text
-from controllers.image_controller import search_images
-from controllers.video_controller import search_videos
-from controllers.news_controller import search_news
-from controllers.book_controller import search_books
+import logging
+from typing import Any, Dict, Optional
+
+from ..models.schemas import SafeSearch, TimeLimit
+from .book import search_books
+from .image import search_images
+from .news import search_news
+from .text import search_text
+from .video import search_videos
 
 logger = logging.getLogger(__name__)
 
@@ -129,14 +129,12 @@ async def search_all(
             return []
 
     # Run all searches in parallel
-    text_results, image_results, video_results, news_results, book_results = (
-        await asyncio.gather(
-            get_text_results(),
-            get_image_results(),
-            get_video_results(),
-            get_news_results(),
-            get_book_results(),
-        )
+    text_results, image_results, video_results, news_results, book_results = await asyncio.gather(
+        get_text_results(),
+        get_image_results(),
+        get_video_results(),
+        get_news_results(),
+        get_book_results(),
     )
 
     total_results = (

@@ -2,14 +2,22 @@
 Image Search Routes
 """
 
-from fastapi import APIRouter, Query, Request, Response
-from models.schemas import SafeSearch, TimeLimit, ImageSize, ImageColor, SearchResponse
-from controllers.image_controller import search_images
 from typing import Optional
+
+from fastapi import APIRouter, Query, Request, Response
 from slowapi import Limiter
 from slowapi.util import get_remote_address
-from config import rate_limit_config
-from utils import run_in_threadpool
+
+from ..config import rate_limit_config
+from ..controllers.image import search_images
+from ..models.schemas import (
+    ImageColor,
+    ImageSize,
+    SafeSearch,
+    SearchResponse,
+    TimeLimit,
+)
+from ..utils import run_in_threadpool
 
 router = APIRouter(prefix="/api/search", tags=["Image Search"])
 
@@ -24,9 +32,7 @@ async def image_search_route(
     response: Response,
     q: str = Query(..., description="Image search query", min_length=1),
     region: str = Query("us-en", description="Region code"),
-    safesearch: SafeSearch = Query(
-        SafeSearch.moderate, description="Safe search level"
-    ),
+    safesearch: SafeSearch = Query(SafeSearch.moderate, description="Safe search level"),
     timelimit: Optional[TimeLimit] = Query(None, description="Time limit"),
     max_results: int = Query(10, ge=1, le=100, description="Maximum results"),
     page: int = Query(1, ge=1, description="Page number"),
@@ -36,9 +42,7 @@ async def image_search_route(
     type_image: Optional[str] = Query(
         None, description="Image type (photo, clipart, gif, transparent, line)"
     ),
-    layout: Optional[str] = Query(
-        None, description="Image layout (Square, Tall, Wide)"
-    ),
+    layout: Optional[str] = Query(None, description="Image layout (Square, Tall, Wide)"),
 ):
     """
     Image Search Endpoint

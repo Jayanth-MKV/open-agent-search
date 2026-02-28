@@ -3,7 +3,8 @@ Book Search Controller
 """
 
 import logging
-from typing import List, Dict, Any
+from typing import Any, Dict, List
+
 from ddgs import DDGS
 from ddgs.exceptions import DDGSException, RatelimitException, TimeoutException
 from fastapi import HTTPException
@@ -33,9 +34,7 @@ def search_books(
         logger.info("Book search: query=%r, max_results=%d", query, max_results)
 
         ddgs = DDGS(timeout=10)
-        results = ddgs.books(
-            query=query, max_results=max_results, page=page, backend=backend
-        )
+        results = ddgs.books(query=query, max_results=max_results, page=page, backend=backend)
 
         return results
 

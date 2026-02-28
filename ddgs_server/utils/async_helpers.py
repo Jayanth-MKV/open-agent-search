@@ -4,7 +4,7 @@ Utility functions for async operations
 
 import asyncio
 from functools import partial, wraps
-from typing import Callable, Any
+from typing import Any, Callable
 
 
 async def run_in_threadpool(func: Callable, *args, **kwargs) -> Any:

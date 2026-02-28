@@ -2,13 +2,14 @@
 Content Fetching Routes
 """
 
-from fastapi import APIRouter, Query, Request, Response, Body
-from models.schemas import SearchResponse
-from controllers.content_controller import fetch_url_content, fetch_multiple_urls
 from typing import List
+
+from fastapi import APIRouter, Body, Query, Request, Response
 from slowapi import Limiter
 from slowapi.util import get_remote_address
-from config import rate_limit_config
+
+from ..config import rate_limit_config
+from ..controllers.content import fetch_multiple_urls, fetch_url_content
 
 router = APIRouter(prefix="/api/content", tags=["Content Fetching"])
 
@@ -59,7 +60,5 @@ async def fetch_multiple_route(
     Intelligently trims content at paragraph/sentence boundaries.
     Failed URLs will include error information instead of content.
     """
-    results = await fetch_multiple_urls(
-        urls=urls[:10], timeout=timeout, max_length=max_length
-    )
+    results = await fetch_multiple_urls(urls=urls[:10], timeout=timeout, max_length=max_length)
     return {"results": results, "count": len(results)}

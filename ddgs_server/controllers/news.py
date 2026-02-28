@@ -1,18 +1,20 @@
 """
-Text/Web Search Controller
+News Search Controller
 """
 
 import logging
-from typing import Optional, List, Dict, Any
+from typing import Any, Dict, List, Optional
+
 from ddgs import DDGS
 from ddgs.exceptions import DDGSException, RatelimitException, TimeoutException
 from fastapi import HTTPException
-from models.schemas import SafeSearch, TimeLimit
+
+from ..models.schemas import SafeSearch, TimeLimit
 
 logger = logging.getLogger(__name__)
 
 
-def search_text(
+def search_news(
     query: str,
     region: str = "us-en",
     safesearch: SafeSearch = SafeSearch.moderate,
@@ -22,28 +24,28 @@ def search_text(
     backend: str = "auto",
 ) -> List[Dict[str, Any]]:
     """
-    Search the web for text content.
+    Search for news articles.
 
     Args:
-        query: Search query string
-        region: Region code (e.g., us-en, uk-en)
+        query: News search query
+        region: Region code
         safesearch: Safe search level
-        timelimit: Time limit for results
-        max_results: Maximum number of results
+        timelimit: Time limit (d/w/m only)
+        max_results: Maximum results
         page: Page number
-        backend: Search backend
+        backend: Search backend (auto, duckduckgo, yahoo)
 
     Returns:
-        List of search results
+        List of news search results
 
     Raises:
         HTTPException: On various error conditions
     """
     try:
-        logger.info("Text search: query=%r, max_results=%d", query, max_results)
+        logger.info("News search: query=%r, max_results=%d", query, max_results)
 
         ddgs = DDGS(timeout=10)
-        results = ddgs.text(
+        results = ddgs.news(
             query=query,
             region=region,
             safesearch=safesearch.value,
@@ -56,15 +58,11 @@ def search_text(
         return results
 
     except RatelimitException:
-        raise HTTPException(
-            status_code=429, detail="Rate limit exceeded. Please try again later."
-        )
+        raise HTTPException(status_code=429, detail="Rate limit exceeded")
     except TimeoutException:
-        raise HTTPException(
-            status_code=504, detail="Request timeout. Please try again."
-        )
+        raise HTTPException(status_code=504, detail="Request timeout")
     except DDGSException as e:
         raise HTTPException(status_code=500, detail=f"Search error: {str(e)}")
     except Exception as e:
-        logger.error(f"Unexpected error in text search: {str(e)}")
+        logger.error(f"Unexpected error in news search: {str(e)}")
         raise HTTPException(status_code=500, detail="Internal server error")

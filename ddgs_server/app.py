@@ -1,42 +1,24 @@
-"""
-DDGS FastAPI Server - main.py
-A complete REST API server using the DDGS library for metasearch functionality.
+"""ClawSearch FastAPI Server — REST API + MCP over HTTP."""
 
-Install dependencies:
-pip install fastapi uvicorn ddgs pydantic slowapi
-
-Run the server:
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-
-API Documentation:
-http://localhost:8000/docs
-"""
-
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
-from starlette.responses import Response
 import logging
+
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import JSONResponse
 from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
+from slowapi.util import get_remote_address
+from starlette.responses import Response
 
-# Import routes
-from routes.text_routes import router as text_router
-from routes.image_routes import router as image_router
-from routes.video_routes import router as video_router
-from routes.news_routes import router as news_router
-from routes.book_routes import router as book_router
-from routes.unified_routes import router as unified_router
-from routes.content_routes import router as content_router
-
-# Import models for exception handling
-from models.schemas import ErrorResponse
-
-# Import rate limit configuration
-from config import rate_limit_config
-
-# Import MCP server
-from mcp_server import mcp
+from .config import rate_limit_config
+from .mcp import mcp
+from .models.schemas import ErrorResponse
+from .routes.book import router as book_router
+from .routes.content import router as content_router
+from .routes.image import router as image_router
+from .routes.news import router as news_router
+from .routes.text import router as text_router
+from .routes.unified import router as unified_router
+from .routes.video import router as video_router
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -55,8 +37,8 @@ mcp_app = mcp.http_app(path="/mcp")
 
 # Initialize FastAPI app with MCP lifespan
 app = FastAPI(
-    title="DDGS Metasearch API",
-    description="A comprehensive metasearch API powered by DDGS library with smart rate limiting",
+    title="ClawSearch Metasearch API",
+    description="A comprehensive metasearch API powered by DuckDuckGo — search the web with one claw.",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
@@ -93,7 +75,7 @@ app.mount("/ai", mcp_app)
 async def root(request: Request, response: Response):
     """Root endpoint with API information"""
     return {
-        "message": "DDGS Metasearch API",
+        "message": "ClawSearch Metasearch API",
         "version": "1.0.0",
         "rate_limits": rate_limit_config.get_limit_description(),
         "endpoints": {
@@ -116,18 +98,13 @@ async def root(request: Request, response: Response):
 @limiter.limit(rate_limit_config.HEALTH_LIMIT)
 async def health_check(request: Request, response: Response):
     """Health check endpoint"""
-    return {"status": "healthy", "service": "DDGS API"}
+    return {"status": "healthy", "service": "ClawSearch API"}
 
 
 # Exception handlers
-from fastapi import HTTPException
-
-
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=exc.status_code, content=ErrorResponse(error=exc.detail).dict()
-    )
+    return JSONResponse(status_code=exc.status_code, content=ErrorResponse(error=exc.detail).dict())
 
 
 @app.exception_handler(Exception)
@@ -139,8 +116,12 @@ async def general_exception_handler(request, exc):
     )
 
 
-if __name__ == "__main__":
+def main():
+    """CLI entry point: start the HTTP API + MCP server."""
     import uvicorn
 
-    # uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
-    uvicorn.run("main:app", host="0.0.0.0", port=8000)
+    uvicorn.run("ddgs_server.app:app", host="0.0.0.0", port=8000)
+
+
+if __name__ == "__main__":
+    main()

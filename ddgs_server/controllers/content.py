@@ -3,13 +3,15 @@ Content Fetcher Controller
 Fetches and extracts content from URLs
 """
 
-import logging
-from typing import List, Dict, Any
-from bs4 import BeautifulSoup
-from fastapi import HTTPException
 import asyncio
+import logging
+from typing import Any, Dict, List
+
+from bs4 import BeautifulSoup
 from ddgs.http_client import HttpClient
-from utils.url_validator import validate_url
+from fastapi import HTTPException
+
+from ..utils.url_validator import validate_url
 
 logger = logging.getLogger(__name__)
 
@@ -67,9 +69,7 @@ async def fetch_url_content(
             title_text = title.get_text().strip() if title else ""
 
             # Extract main content
-            main_content = (
-                soup.find("main") or soup.find("article") or soup.find("body")
-            )
+            main_content = soup.find("main") or soup.find("article") or soup.find("body")
             content = (
                 main_content.get_text(separator="\n", strip=True)
                 if main_content

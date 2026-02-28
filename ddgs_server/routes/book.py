@@ -3,12 +3,13 @@ Book Search Routes
 """
 
 from fastapi import APIRouter, Query, Request, Response
-from models.schemas import SearchResponse
-from controllers.book_controller import search_books
 from slowapi import Limiter
 from slowapi.util import get_remote_address
-from config import rate_limit_config
-from utils import run_in_threadpool
+
+from ..config import rate_limit_config
+from ..controllers.book import search_books
+from ..models.schemas import SearchResponse
+from ..utils import run_in_threadpool
 
 router = APIRouter(prefix="/api/search", tags=["Book Search"])
 

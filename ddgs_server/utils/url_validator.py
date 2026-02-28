@@ -6,9 +6,10 @@ Blocks requests to internal networks, cloud metadata endpoints, and non-HTTP sch
 """
 
 import ipaddress
-import socket
 import logging
+import socket
 from urllib.parse import urlparse
+
 from fastapi import HTTPException
 
 logger = logging.getLogger(__name__)
@@ -69,7 +70,9 @@ def validate_url(url: str) -> str:
     if parsed.scheme not in ALLOWED_SCHEMES:
         raise HTTPException(
             status_code=400,
-            detail=f"URL scheme '{parsed.scheme}' is not allowed. Only http and https are permitted.",
+            detail=(
+                f"URL scheme '{parsed.scheme}' is not allowed. Only http and https are permitted."
+            ),
         )
 
     # Check hostname exists

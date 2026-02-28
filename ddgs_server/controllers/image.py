@@ -3,11 +3,13 @@ Image Search Controller
 """
 
 import logging
-from typing import Optional, List, Dict, Any
+from typing import Any, Dict, List, Optional
+
 from ddgs import DDGS
 from ddgs.exceptions import DDGSException, RatelimitException, TimeoutException
 from fastapi import HTTPException
-from models.schemas import SafeSearch, TimeLimit, ImageSize, ImageColor
+
+from ..models.schemas import ImageColor, ImageSize, SafeSearch, TimeLimit
 
 logger = logging.getLogger(__name__)
 
