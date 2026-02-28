@@ -218,5 +218,5 @@ Plug Open Agent Search into any MCP-compatible client — or call the REST API d
 === "Claude Code"
 
     ```bash
-    claude mcp add ddgs -- uvx --from open-agent-search oas-mcp
+    claude mcp add oas -- uvx --from open-agent-search oas-mcp
     ```

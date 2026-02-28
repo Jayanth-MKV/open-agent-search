@@ -73,5 +73,5 @@ cp .env.example .env
 | `APP_ENV`      | `production` | `development` or `production` (changes rate limits) |
 | `HOST`         | `0.0.0.0`    | Server bind address                                 |
 | `PORT`         | `8000`       | Server port                                         |
-| `DDGS_TIMEOUT` | `10`         | DDGS request timeout (seconds)                      |
+| `DDGS_TIMEOUT` | `10`         | Search request timeout (seconds)                    |
 | `DDGS_PROXY`   | —            | Optional SOCKS5 proxy URL                           |

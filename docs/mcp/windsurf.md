@@ -19,4 +19,4 @@
 
 ## Verify
 
-Open Windsurf's MCP panel to confirm the `ddgs` server is connected and showing 8 tools.
+Open Windsurf's MCP panel to confirm the `oas` server is connected and showing 8 tools.

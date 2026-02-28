@@ -29,7 +29,7 @@ You need [`uv`](https://docs.astral.sh/uv/getting-started/installation/) install
 
 ## Verify
 
-After restarting, you should see a hammer icon (:material-hammer:) in the Claude Desktop chat input. Click it to see the 8 DDGS tools available.
+After restarting, you should see a hammer icon (:material-hammer:) in the Claude Desktop chat input. Click it to see the 8 Open Agent Search tools available.
 
 ## Using a Deployed Server (HTTP)
 
@@ -38,7 +38,7 @@ If you have a remote Open Agent Search instance running (e.g. on Vercel or Docke
 ```json
 {
   "mcpServers": {
-    "ddgs-remote": {
+    "oas-remote": {
       "url": "https://your-deployed-instance.vercel.app/ai/mcp"
     }
   }

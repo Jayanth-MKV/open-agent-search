@@ -43,9 +43,9 @@ All requests are routed to the FastAPI application, including:
 
 Set environment variables in **Vercel → Project → Settings → Environment Variables**:
 
-| Variable       | Recommended Value | Description            |
-| -------------- | ----------------- | ---------------------- |
-| `APP_ENV`      | `production`      | Enables stricter rate limits |
+| Variable  | Recommended Value | Description                  |
+| --------- | ----------------- | ---------------------------- |
+| `APP_ENV` | `production`      | Enables stricter rate limits |
 
 ## Using the Deployed Instance
 
@@ -64,7 +64,7 @@ curl "https://your-project.vercel.app/api/search/text?q=hello"
 === "Claude Code"
 
     ```bash
-    claude mcp add --transport http ddgs-remote https://your-project.vercel.app/ai/mcp
+    claude mcp add --transport http oas-remote https://your-project.vercel.app/ai/mcp
     ```
 
 === "Cursor (via mcp-remote)"
@@ -72,7 +72,7 @@ curl "https://your-project.vercel.app/api/search/text?q=hello"
     ```json
     {
       "mcpServers": {
-        "ddgs-remote": {
+        "oas-remote": {
           "command": "npx",
           "args": ["-y", "mcp-remote", "https://your-project.vercel.app/ai/mcp"]
         }

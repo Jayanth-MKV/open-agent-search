@@ -19,7 +19,7 @@
 
 ## Verify
 
-Open Cursor Settings → MCP. You should see `ddgs` listed with a green status indicator.
+Open Cursor Settings → MCP. You should see `oas` listed with a green status indicator.
 
 ## Using a Remote Server
 
@@ -28,7 +28,7 @@ If you have a deployed Open Agent Search instance, you can connect via HTTP usin
 ```json
 {
   "mcpServers": {
-    "ddgs-remote": {
+    "oas-remote": {
       "command": "npx",
       "args": ["-y", "mcp-remote", "https://your-instance.vercel.app/ai/mcp"]
     }
