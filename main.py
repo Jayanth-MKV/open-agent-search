@@ -132,10 +132,10 @@ async def http_exception_handler(request, exc):
 
 @app.exception_handler(Exception)
 async def general_exception_handler(request, exc):
-    logger.error(f"Unhandled exception: {str(exc)}")
+    logger.error(f"Unhandled exception: {exc!r}")
     return JSONResponse(
         status_code=500,
-        content=ErrorResponse(error="Internal server error", details=str(exc)).dict(),
+        content=ErrorResponse(error="Internal server error").dict(),
     )
 
 

@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from fastapi import HTTPException
 import asyncio
 from ddgs.http_client import HttpClient
+from utils.url_validator import validate_url
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +34,10 @@ async def fetch_url_content(
         HTTPException: On fetch errors
     """
     try:
-        logger.info(f"Fetching content from: {url}")
+        # SSRF protection: validate URL before fetching
+        validate_url(url)
+
+        logger.info(f"Fetching content from: {url!r}")
 
         # Use DDGS HttpClient with browser impersonation for better compatibility
         # This uses primp which handles browser fingerprinting automatically
@@ -47,7 +51,7 @@ async def fetch_url_content(
             return response.text, response.status_code
 
         # Run network I/O in thread pool to keep it non-blocking
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         html_text, status_code = await loop.run_in_executor(None, fetch_with_ddgs)
 
         def parse_html():
@@ -83,7 +87,6 @@ async def fetch_url_content(
             return title_text, description, content
 
         # Run CPU-intensive parsing in thread pool
-        loop = asyncio.get_event_loop()
         title_text, description, content = await loop.run_in_executor(None, parse_html)
 
         # Intelligent content trimming
@@ -145,9 +148,17 @@ async def fetch_multiple_urls(
 
     async def fetch_one(url: str):
         try:
+            validate_url(url)  # SSRF protection for each URL
             return await fetch_url_content(url, timeout, max_length)
+        except HTTPException as e:
+            logger.error(f"Blocked or failed URL {url!r}: {e.detail}")
+            return {
+                "url": url,
+                "error": e.detail,
+                "status_code": None,
+            }
         except Exception as e:
-            logger.error(f"Failed to fetch {url}: {str(e)}")
+            logger.error(f"Failed to fetch {url!r}: {e!r}")
             return {
                 "url": url,
                 "error": str(e),
