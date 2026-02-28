@@ -39,11 +39,13 @@ async def search_all(
         Dictionary containing results from all search types
     """
     logger.info(
-        f"Unified search (parallel): query='{query}', max_results_per_type={max_results_per_type}"
+        "Unified search (parallel): query=%r, max_results_per_type=%d",
+        query,
+        max_results_per_type,
     )
 
     # Create a thread pool executor for running blocking I/O operations
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
 
     # Define async wrapper functions for each search
     async def get_text_results():

@@ -25,7 +25,7 @@ async def run_in_threadpool(func: Callable, *args, **kwargs) -> Any:
     Example:
         result = await run_in_threadpool(search_text, query="python", max_results=10)
     """
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
 
     # If function has kwargs, use partial to bind them
     if kwargs:
