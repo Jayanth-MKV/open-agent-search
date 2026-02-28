@@ -1,4 +1,4 @@
-"""ClawSearch FastAPI Server — REST API + MCP over HTTP."""
+"""Open Agent Search FastAPI Server — REST API + MCP over HTTP."""
 
 import logging
 
@@ -37,8 +37,8 @@ mcp_app = mcp.http_app(path="/mcp")
 
 # Initialize FastAPI app with MCP lifespan
 app = FastAPI(
-    title="ClawSearch Metasearch API",
-    description="A comprehensive metasearch API powered by DuckDuckGo — search the web with one claw.",
+    title="Open Agent Search API",
+    description="Privacy-first metasearch API powered by DuckDuckGo.",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
@@ -75,7 +75,7 @@ app.mount("/ai", mcp_app)
 async def root(request: Request, response: Response):
     """Root endpoint with API information"""
     return {
-        "message": "ClawSearch Metasearch API",
+        "message": "Open Agent Search Metasearch API",
         "version": "1.0.0",
         "rate_limits": rate_limit_config.get_limit_description(),
         "endpoints": {

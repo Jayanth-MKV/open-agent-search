@@ -1,4 +1,4 @@
-"""MCP Server for ClawSearch — provides LLM-friendly search tools via FastMCP."""
+"""MCP Server for Open Agent Search — provides LLM-friendly search tools via FastMCP."""
 
 from typing import Any, Dict, List, Optional
 
@@ -21,7 +21,7 @@ from .models.schemas import (
 )
 
 # Create MCP server
-mcp = FastMCP("ClawSearch Tools", stateless_http=True)
+mcp = FastMCP("Open Agent Search Tools", stateless_http=True)
 
 
 @mcp.tool()

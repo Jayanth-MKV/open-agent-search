@@ -34,4 +34,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 8000
 
-CMD ["clawsearch"]
+CMD ["open-agent-search"]
