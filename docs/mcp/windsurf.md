@@ -7,9 +7,9 @@
 ```json
 {
   "mcpServers": {
-    "ddgs": {
+    "oas": {
       "command": "uvx",
-      "args": ["--from", "ddgs-server", "ddgs-mcp"]
+      "args": ["--from", "open-agent-search", "oas-mcp"]
     }
   }
 }

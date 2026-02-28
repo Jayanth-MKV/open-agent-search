@@ -1,6 +1,6 @@
 # API Endpoints
 
-DDGS Server exposes a RESTful API at `http://localhost:8000`. Interactive docs are available at [`/docs`](http://localhost:8000/docs) (Swagger UI) and [`/redoc`](http://localhost:8000/redoc) (ReDoc).
+Open Agent Search exposes a RESTful API at `http://localhost:8000`. Interactive docs are available at [`/docs`](http://localhost:8000/docs) (Swagger UI) and [`/redoc`](http://localhost:8000/redoc) (ReDoc).
 
 ## Overview
 

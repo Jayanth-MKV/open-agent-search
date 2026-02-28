@@ -5,12 +5,12 @@
 ## Setup (stdio — local)
 
 ```bash
-claude mcp add ddgs -- uvx --from ddgs-server ddgs-mcp
+claude mcp add ddgs -- uvx --from open-agent-search oas-mcp
 ```
 
 ## Setup (HTTP — remote)
 
-If you have a deployed DDGS Server instance:
+If you have a deployed Open Agent Search instance:
 
 ```bash
 claude mcp add --transport http ddgs-remote https://your-instance.vercel.app/ai/mcp
@@ -28,7 +28,7 @@ claude mcp add --transport http ddgs-local http://localhost:8000/ai/mcp
 # List all configured servers
 claude mcp list
 
-# Get details for the DDGS server
+# Get details for the Open Agent Search
 claude mcp get ddgs
 
 # Remove the server
@@ -50,5 +50,5 @@ Use `--scope` to control where the config is stored:
 
 ```bash
 # Make it available across all your projects
-claude mcp add --scope user ddgs -- uvx --from ddgs-server ddgs-mcp
+claude mcp add --scope user ddgs -- uvx --from open-agent-search oas-mcp
 ```

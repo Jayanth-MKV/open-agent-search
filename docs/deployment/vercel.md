@@ -1,10 +1,10 @@
 # Vercel
 
-Deploy DDGS Server to [Vercel](https://vercel.com) with one click — no server management required.
+Deploy Open Agent Search to [Vercel](https://vercel.com) with one click — no server management required.
 
 ## One-Click Deploy
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FJayanth-MKV%2Fddgs-server&project-name=ddgs-server&repository-name=ddgs-server)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FJayanth-MKV%2Fopen-agent-search&project-name=open-agent-search&repository-name=open-agent-search)
 
 Click the button above to:
 
@@ -20,14 +20,14 @@ Vercel uses the `@vercel/python` builder to serve the FastAPI app as a serverles
 {
   "builds": [
     {
-      "src": "ddgs_server/app.py",
+      "src": "open_agent_search/app.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "ddgs_server/app.py"
+      "dest": "open_agent_search/app.py"
     }
   ]
 }

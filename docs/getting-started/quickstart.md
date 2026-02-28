@@ -4,13 +4,13 @@
 
 ```bash
 # Via CLI entry point
-uv run ddgs-server
+uv run open-agent-search
 
 # Or via uvicorn directly (with hot reload for development)
-uv run uvicorn ddgs_server.app:app --reload --host 0.0.0.0 --port 8000
+uv run uvicorn open_agent_search.app:app --reload --host 0.0.0.0 --port 8000
 
 # Or via python -m
-uv run python -m ddgs_server
+uv run python -m open_agent_search
 ```
 
 The API is now running at `http://localhost:8000`.
@@ -48,13 +48,13 @@ curl -X POST "http://localhost:8000/api/content/fetch-multiple" \
 For local MCP clients (Claude Desktop, Cursor, VS Code, etc.):
 
 ```bash
-uv run ddgs-mcp
+uv run oas-mcp
 ```
 
 Or run directly via `uvx` (no install needed):
 
 ```bash
-uvx --from ddgs-server ddgs-mcp
+uvx --from open-agent-search oas-mcp
 ```
 
 !!! tip "Next steps"

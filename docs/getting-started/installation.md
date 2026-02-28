@@ -26,29 +26,29 @@ Install `uv`:
 No clone, no install — run the MCP server directly:
 
 ```bash
-uvx --from ddgs-server ddgs-mcp
+uvx --from open-agent-search oas-mcp
 ```
 
 ### Install from PyPI
 
 ```bash
-uv pip install ddgs-server
+uv pip install open-agent-search
 # or with pip:
-pip install ddgs-server
+pip install open-agent-search
 ```
 
 After installing, two CLI commands are available:
 
 | Command       | Description                             |
 | ------------- | --------------------------------------- |
-| `ddgs-server` | Start the HTTP API + MCP server         |
-| `ddgs-mcp`    | Start the standalone MCP server (stdio) |
+| `open-agent-search` | Start the HTTP API + MCP server         |
+| `oas-mcp`    | Start the standalone MCP server (stdio) |
 
 ### From Source
 
 ```bash
-git clone https://github.com/Jayanth-MKV/ddgs-server.git
-cd ddgs-server
+git clone https://github.com/Jayanth-MKV/open-agent-search.git
+cd open-agent-search
 uv sync            # installs all deps + creates .venv automatically
 uv sync --dev      # include dev tools (pytest, ruff, locust)
 ```
@@ -57,10 +57,10 @@ uv sync --dev      # include dev tools (pytest, ruff, locust)
 
 ```bash
 # Check the HTTP API
-uv run ddgs-server
+uv run open-agent-search
 # Visit http://localhost:8000/docs for Swagger UI
 
 # Check the MCP server
-uv run ddgs-mcp
+uv run oas-mcp
 # The server will start in stdio mode — press Ctrl+C to exit
 ```

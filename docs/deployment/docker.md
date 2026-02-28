@@ -1,6 +1,6 @@
 # Docker
 
-Run DDGS Server in a container with zero local setup.
+Run Open Agent Search in a container with zero local setup.
 
 ## Quick Start
 
@@ -18,8 +18,8 @@ docker compose down
 ## Manual Build
 
 ```bash
-docker build -t ddgs-server .
-docker run -p 8000:8000 ddgs-server
+docker build -t open-agent-search .
+docker run -p 8000:8000 open-agent-search
 ```
 
 The server is available at `http://localhost:8000`.
@@ -32,7 +32,7 @@ Pass environment variables with `-e` or via a `.env` file:
 docker run -p 8000:8000 \
   -e APP_ENV=production \
   -e DDGS_TIMEOUT=15 \
-  ddgs-server
+  open-agent-search
 ```
 
 See [Configuration](../getting-started/quickstart.md#configuration) for all variables.

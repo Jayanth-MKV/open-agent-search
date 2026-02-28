@@ -9,14 +9,14 @@
 | macOS   | `~/Library/Application Support/Claude/claude_desktop_config.json` |
 | Windows | `%APPDATA%\Claude\claude_desktop_config.json`                     |
 
-**2.** Add the DDGS server:
+**2.** Add the Open Agent Search:
 
 ```json
 {
   "mcpServers": {
-    "ddgs": {
+    "oas": {
       "command": "uvx",
-      "args": ["--from", "ddgs-server", "ddgs-mcp"]
+      "args": ["--from", "open-agent-search", "oas-mcp"]
     }
   }
 }
@@ -33,7 +33,7 @@ After restarting, you should see a hammer icon (:material-hammer:) in the Claude
 
 ## Using a Deployed Server (HTTP)
 
-If you have a remote DDGS Server instance running (e.g. on Vercel or Docker), you can connect via HTTP instead:
+If you have a remote Open Agent Search instance running (e.g. on Vercel or Docker), you can connect via HTTP instead:
 
 ```json
 {

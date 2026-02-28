@@ -7,9 +7,9 @@
 ```json
 {
   "mcpServers": {
-    "ddgs": {
+    "oas": {
       "command": "uvx",
-      "args": ["--from", "ddgs-server", "ddgs-mcp"]
+      "args": ["--from", "open-agent-search", "oas-mcp"]
     }
   }
 }
@@ -23,7 +23,7 @@ Open Cursor Settings → MCP. You should see `ddgs` listed with a green status i
 
 ## Using a Remote Server
 
-If you have a deployed DDGS Server instance, you can connect via HTTP using `mcp-remote`:
+If you have a deployed Open Agent Search instance, you can connect via HTTP using `mcp-remote`:
 
 ```json
 {

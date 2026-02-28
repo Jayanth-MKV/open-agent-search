@@ -1,13 +1,13 @@
 # Other MCP Clients
 
-Any MCP client that supports **stdio** transport can use DDGS Server.
+Any MCP client that supports **stdio** transport can use Open Agent Search.
 
 ## Generic Configuration
 
 | Setting       | Value                                   |
 | ------------- | --------------------------------------- |
 | **Command**   | `uvx`                                   |
-| **Args**      | `["--from", "ddgs-server", "ddgs-mcp"]` |
+| **Args**      | `["--from", "open-agent-search", "oas-mcp"]` |
 | **Transport** | `stdio`                                 |
 
 ## Using a Global Install
@@ -15,16 +15,16 @@ Any MCP client that supports **stdio** transport can use DDGS Server.
 If your client doesn't support `uvx`, install the package first:
 
 ```bash
-uv pip install ddgs-server
+uv pip install open-agent-search
 # or
-pip install ddgs-server
+pip install open-agent-search
 ```
 
 Then configure your client with:
 
 | Setting       | Value      |
 | ------------- | ---------- |
-| **Command**   | `ddgs-mcp` |
+| **Command**   | `oas-mcp` |
 | **Transport** | `stdio`    |
 
 ## Using HTTP Transport
@@ -32,7 +32,7 @@ Then configure your client with:
 If your client supports HTTP/SSE MCP transport, start the HTTP server and point the client at the MCP endpoint:
 
 ```bash
-uv run ddgs-server
+uv run open-agent-search
 # MCP endpoint → http://localhost:8000/ai/mcp
 ```
 

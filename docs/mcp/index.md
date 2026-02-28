@@ -1,17 +1,17 @@
 # MCP Integration
 
-DDGS Server provides a full [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server with **8 search tools**. It works in two modes:
+Open Agent Search provides a full [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server with **8 search tools**. It works in two modes:
 
-| Mode      | Command       | Transport       | Use case                              |
-| --------- | ------------- | --------------- | ------------------------------------- |
-| **HTTP**  | `ddgs-server` | Streamable HTTP | Deployed API — MCP at `/ai/mcp`       |
-| **stdio** | `ddgs-mcp`    | Standard I/O    | Local tool — wire into any MCP client |
+| Mode      | Command             | Transport       | Use case                              |
+| --------- | ------------------- | --------------- | ------------------------------------- |
+| **HTTP**  | `open-agent-search` | Streamable HTTP | Deployed API — MCP at `/ai/mcp`       |
+| **stdio** | `oas-mcp`           | Standard I/O    | Local tool — wire into any MCP client |
 
 ## Zero-Install
 
 !!! success "No clone, no pip install needed"
 Just point your MCP client to:
-`     uvx --from ddgs-server ddgs-mcp
+`     uvx --from open-agent-search oas-mcp
     `
 This uses [`uvx`](https://docs.astral.sh/uv/concepts/tools/) to run the server directly from PyPI.
 
@@ -49,6 +49,12 @@ This uses [`uvx`](https://docs.astral.sh/uv/concepts/tools/) to run the server d
 
   [:octicons-arrow-right-24: Setup guide](windsurf.md)
 
+- :material-crab:{ .lg .middle } **OpenClaw**
+
+  ***
+
+  [:octicons-arrow-right-24: Setup guide](openclaw.md)
+
 - :material-dots-horizontal:{ .lg .middle } **Other Clients**
 
   ***
@@ -67,6 +73,7 @@ This uses [`uvx`](https://docs.astral.sh/uv/concepts/tools/) to run the server d
 | Cursor         | `~/.cursor/mcp.json`                                                      |
 | VS Code        | `.vscode/mcp.json` (per project)                                          |
 | Windsurf       | `~/.codeium/windsurf/mcp_config.json`                                     |
+| OpenClaw       | `~/.openclaw/openclaw.json` or `~/.openclaw/workspace/skills/`            |
 
 ## Available Tools
 

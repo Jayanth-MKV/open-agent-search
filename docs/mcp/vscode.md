@@ -7,10 +7,10 @@ Add a `.vscode/mcp.json` file in your project root:
 ```json
 {
   "servers": {
-    "ddgs": {
+    "oas": {
       "type": "stdio",
       "command": "uvx",
-      "args": ["--from", "ddgs-server", "ddgs-mcp"]
+      "args": ["--from", "open-agent-search", "oas-mcp"]
     }
   }
 }
@@ -27,10 +27,10 @@ To make it available across all VS Code workspaces, add it to your **User Settin
 {
   "mcp": {
     "servers": {
-      "ddgs": {
+      "oas": {
         "type": "stdio",
         "command": "uvx",
-        "args": ["--from", "ddgs-server", "ddgs-mcp"]
+        "args": ["--from", "open-agent-search", "oas-mcp"]
       }
     }
   }
@@ -45,7 +45,7 @@ To make it available across all VS Code workspaces, add it to your **User Settin
 
 ## Using a Remote Server
 
-For a deployed DDGS Server instance:
+For a deployed Open Agent Search instance:
 
 ```json
 {

@@ -92,9 +92,9 @@ markdown_extensions:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/Jayanth-MKV/ddgs-server
+      link: https://github.com/Jayanth-MKV/open-agent-search
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/ddgs-server/
+      link: https://pypi.org/project/open-agent-search/
   generator: false
 
 nav:
@@ -109,6 +109,7 @@ nav:
       - Cursor: mcp/cursor.md
       - VS Code: mcp/vscode.md
       - Windsurf: mcp/windsurf.md
+      - OpenClaw: mcp/openclaw.md
       - Other Clients: mcp/other-clients.md
   - API Reference:
       - Endpoints: api/endpoints.md
