@@ -1,7 +1,26 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
 [project]
 name = "ddgs-server"
-version = "0.1.0"
+version = "1.0.0"
+description = "A production-ready metasearch API and MCP server powered by DuckDuckGo"
+readme = "README.md"
+license = { text = "MIT" }
 requires-python = ">=3.12"
+authors = [{ name = "Jayanth-MKV" }]
+keywords = ["ddgs", "duckduckgo", "search", "api", "mcp", "fastapi"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: FastAPI",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP :: Indexing/Search",
+]
 dependencies = [
     "beautifulsoup4>=4.14.3",
     "ddgs>=9.8.0",
@@ -11,5 +30,36 @@ dependencies = [
     "slowapi>=0.1.9",
 ]
 
+[project.urls]
+Homepage = "https://github.com/Jayanth-MKV/ddgs-server"
+Documentation = "https://jayanth-mkv.github.io/ddgs-server/"
+Repository = "https://github.com/Jayanth-MKV/ddgs-server"
+Issues = "https://github.com/Jayanth-MKV/ddgs-server/issues"
+
+[project.scripts]
+ddgs-server = "ddgs_server.app:main"
+ddgs-mcp = "ddgs_server.mcp:main"
+
 [dependency-groups]
-dev = ["locust>=2.42.2"]
+dev = [
+    "locust>=2.42.2",
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "httpx>=0.28.1",
+    "ruff>=0.9",
+]
+docs = ["mkdocs-material>=9.6", "mkdocs-minify-plugin>=0.8"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["ddgs_server"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
