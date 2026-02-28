@@ -1,616 +1,124 @@
-# DDGS Server - Complete Implementation
+# Open Agent Search (OAS)
 
-A production-ready server with DDGS metasearch integration and MCP (Model Context Protocol) support.
-A production-ready server with DDGS metasearch integration and MCP (Model Context Protocol) support.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-blue.svg)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.121+-green.svg)](https://fastapi.tiangolo.com/)
+[![Docs](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://jayanth-mkv.github.io/open-agent-search/)
 
----
+The **sensory organ** for the AI agent ecosystem. An independent, privacy-first search layer providing unfiltered access to the world's knowledge via [MCP](https://modelcontextprotocol.io/) and HTTP API.
 
-## 📦 Project Structure
+> **Open Agent Search is an independent foundational tool.** We are not bound to any single agent framework but support them all (including OpenClaw via `openclaw-search`). Our mission is accuracy, speed, and universal access.
 
-```
-ddgs-server/
-├── main.py                 # FastAPI app initialization and router registration
-├── mcp_server.py          # MCP server with search tools for LLMs
-├── mcp_server.py          # MCP server with search tools for LLMs
-├── models/                 # Data models and schemas
-│   ├── __init__.py
-│   └── schemas.py         # Pydantic models and enums
-├── controllers/           # Business logic layer
-│   ├── __init__.py
-│   ├── text_controller.py
-│   ├── image_controller.py
-│   ├── video_controller.py
-│   ├── news_controller.py
-│   ├── book_controller.py
-│   └── unified_controller.py  # Searches all sources at once
-├── routes/                # API route definitions
-│   ├── __init__.py
-│   ├── text_routes.py
-│   ├── image_routes.py
-│   ├── video_routes.py
-│   ├── news_routes.py
-│   ├── book_routes.py
-│   └── unified_routes.py      # Unified search endpoint
-└── public/
-```
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FJayanth-MKV%2Fopen-agent-search&project-name=open-agent-search&repository-name=open-agent-search)
 
-
+> **[Read the full documentation →](https://jayanth-mkv.github.io/open-agent-search/)**
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
-### 1. Installation
+### Zero-install (MCP)
 
 ```bash
-# Create project directory
-mkdir ddgs-server
-cd ddgs-server
-
-# Install dependencies
-pip install -r requirements.txt
+# Works instantly — no clone or install needed
+uvx --from clawsearch clawsearch-mcp
 ```
 
-### 2. Run the Server
+### Install & Run
 
 ```bash
-# Save the main.py file from the generated code
-# Then run:
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+# Install from PyPI
+uv pip install clawsearch
+
+# Start the HTTP API + MCP server
+clawsearch
+# → http://localhost:8000 (API)
+# → http://localhost:8000/ai/mcp (MCP)
 ```
 
-### 3. Access Documentation
+### From Source
 
-- **Swagger UI**: http://localhost:8000/docs
-- **ReDoc**: http://localhost:8000/redoc
-- **API Root**: http://localhost:8000
-- **MCP Server**: http://localhost:8000/mcp
-
----
-
-## 🤖 MCP Server Integration
-
-This server includes an integrated MCP (Model Context Protocol) server that provides LLM-friendly search tools. The MCP server is mounted at `/mcp` and exposes the following tools:
-
-### MCP Tools Available:
-- **search_web** - Search the web for text content
-- **search_images** - Search for images with size/color filters
-- **search_videos** - Search for videos with resolution/duration filters
-- **search_news** - Search for news articles with time limits
-- **search_books** - Search for books
-- **search_everything** - Search all sources at once (parallel)
-- **fetch_content** - Extract content from a single URL
-- **fetch_multiple_contents** - Extract content from multiple URLs (max 10)
-
-### Using MCP Server:
-The MCP server reuses all existing controller logic, making it efficient and maintainable. It's accessible at `/mcp/mcp` for LLM clients that support the MCP protocol.
-
----
-
-## 🤖 MCP Server Integration
-
-This server includes an integrated MCP (Model Context Protocol) server that provides LLM-friendly search tools. The MCP server is mounted at `/mcp` and exposes the following tools:
-
-### MCP Tools Available:
-- **search_web** - Search the web for text content
-- **search_images** - Search for images with size/color filters
-- **search_videos** - Search for videos with resolution/duration filters
-- **search_news** - Search for news articles with time limits
-- **search_books** - Search for books
-- **search_everything** - Search all sources at once (parallel)
-
-### Using MCP Server:
-The MCP server reuses all existing controller logic, making it efficient and maintainable. It's accessible at `/mcp` for LLM clients that support the MCP protocol.
-
----
-
-## 🔌 API Endpoints
-
-### Overview
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/` | GET | API information |
-| `/health` | GET | Health check |
-| `/api/search/text` | GET | Web/text search |
-| `/api/content/fetch` | GET | Fetch content from URL |
-| `/api/content/fetch-multiple` | POST | Fetch content from multiple URLs |
-| `/api/search/images` | GET | Image search |
-| `/api/search/videos` | GET | Video search |
-| `/api/search/news` | GET | News search |
-| `/api/search/books` | GET | Book search |
-
----
-
-## 📝 Endpoint Details
-
-### 1. Text/Web Search
-
-**Endpoint**: `GET /api/search/text`
-
-**Parameters**:
-- `q` (required): Search query
-- `region` (optional): Region code (default: us-en)
-- `safesearch` (optional): on/moderate/off (default: moderate)
-- `timelimit` (optional): d/w/m/y
-- `max_results` (optional): 1-100 (default: 10)
-- `page` (optional): Page number (default: 1)
-- `backend` (optional): Search backend (default: auto)
-
-**Example**:
 ```bash
-curl "http://localhost:8000/api/search/text?q=python%20programming&max_results=5"
+git clone https://github.com/Jayanth-MKV/clawsearch.git
+cd clawsearch
+uv sync
+uv run clawsearch
 ```
 
-**Response**:
+### Docker
+
+```bash
+docker compose up -d
+```
+
+---
+
+## What's Included
+
+| Feature                 | Description                                                                    |
+| ----------------------- | ------------------------------------------------------------------------------ |
+| **REST API**            | 8 search endpoints (text, images, videos, news, books, unified, content fetch) |
+| **MCP Server**          | 8 tools accessible via stdio or HTTP — works with every major AI coding client |
+| **OpenClaw Compatible** | Works as an OpenClaw skill via stdio MCP transport                             |
+| **Rate Limiting**       | Per-IP rate limits with configurable dev/prod profiles                         |
+| **One-Click Deploy**    | Deploy to Vercel in seconds                                                    |
+| **Docker**              | Multi-stage Dockerfile + Compose with health checks                            |
+
+---
+
+## MCP Client Setup
+
+> **[Full setup guides →](https://jayanth-mkv.github.io/clawsearch/mcp/)**
+
+Add to any MCP client with `uvx` — zero install:
+
 ```json
 {
-  "success": true,
-  "query": "python programming",
-  "results_count": 5,
-  "results": [
-    {
-      "title": "Python Programming Language",
-      "href": "https://www.python.org/",
-      "body": "Official Python website..."
+  "mcpServers": {
+    "clawsearch": {
+      "command": "uvx",
+      "args": ["--from", "clawsearch", "clawsearch-mcp"]
     }
-  ]
+  }
 }
 ```
 
----
-
-### 2. Image Search
-
-**Endpoint**: `GET /api/search/images`
-
-**Additional Parameters**:
-- `size`: Small/Medium/Large/Wallpaper
-- `color`: color/Monochrome/Red/Orange/Yellow/Green/Blue/Purple/Pink
-- `type_image`: photo/clipart/gif/transparent/line
-- `layout`: Square/Tall/Wide
-
-**Example**:
-```bash
-curl "http://localhost:8000/api/search/images?q=butterfly&size=Large&color=color"
-```
+Guides available for: **Claude Desktop** · **Claude Code** · **Cursor** · **VS Code** · **Windsurf** · **OpenClaw** · [and more](https://jayanth-mkv.github.io/clawsearch/mcp/other-clients/)
 
 ---
 
-### 3. Video Search
+## API Endpoints
 
-**Endpoint**: `GET /api/search/videos`
+| Endpoint                      | Method | Description                        |
+| ----------------------------- | ------ | ---------------------------------- |
+| `/api/search/text`            | GET    | Web / text search                  |
+| `/api/search/images`          | GET    | Image search                       |
+| `/api/search/videos`          | GET    | Video search                       |
+| `/api/search/news`            | GET    | News search                        |
+| `/api/search/books`           | GET    | Book search                        |
+| `/api/search/all`             | GET    | Unified parallel search            |
+| `/api/content/fetch`          | GET    | Fetch & extract content from a URL |
+| `/api/content/fetch-multiple` | POST   | Fetch content from multiple URLs   |
+| `/ai/mcp`                     | —      | MCP server endpoint                |
 
-**Additional Parameters**:
-- `resolution`: high/standard
-- `duration`: short/medium/long
-- `license_videos`: creativeCommon/youtube
-
-**Example**:
-```bash
-curl "http://localhost:8000/api/search/videos?q=tutorial&resolution=high&duration=medium"
-```
-
----
-
-### 4. News Search
-
-**Endpoint**: `GET /api/search/news`
-
-**Parameters**:
-- Same as text search
-- `timelimit` limited to: d/w/m
-
-**Example**:
-```bash
-curl "http://localhost:8000/api/search/news?q=technology&timelimit=w&max_results=20"
-```
+> **[Full API reference →](https://jayanth-mkv.github.io/clawsearch/api/endpoints/)**
 
 ---
 
-### 5. Book Search
+## Documentation
 
-**Endpoint**: `GET /api/search/books`
+- [Installation](https://jayanth-mkv.github.io/clawsearch/getting-started/installation/)
+- [Quick Start](https://jayanth-mkv.github.io/clawsearch/getting-started/quickstart/)
+- [MCP Integration](https://jayanth-mkv.github.io/clawsearch/mcp/)
+- [API Reference](https://jayanth-mkv.github.io/clawsearch/api/endpoints/)
+- [Docker Deployment](https://jayanth-mkv.github.io/clawsearch/deployment/docker/)
+- [Vercel Deployment](https://jayanth-mkv.github.io/clawsearch/deployment/vercel/)
+- [Contributing](https://jayanth-mkv.github.io/clawsearch/contributing/)
 
-**Parameters**:
-- `q` (required): Search query
-- `max_results` (optional): 1-100 (default: 10)
-- `page` (optional): Page number
+## Contributing
 
-**Example**:
-```bash
-curl "http://localhost:8000/api/search/books?q=machine%20learning&max_results=15"
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
----
+## License
 
-### 6. Content Fetching
-
-**Endpoint**: `GET /api/content/fetch`
-
-**Parameters**:
-- `url` (required): URL to fetch content from
-- `timeout` (optional): Request timeout 5-30 seconds (default: 10)
-
-**Example**:
-```bash
-curl "http://localhost:8000/api/content/fetch?url=https://example.com/article"
-```
-
-**Response**:
-```json
-{
-  "url": "https://example.com/article",
-  "title": "Article Title",
-  "description": "Meta description",
-  "content": "Main article text...",
-  "content_length": 5420,
-  "status_code": 200
-}
-```
-
-**Endpoint**: `POST /api/content/fetch-multiple`
-
-**Body**:
-```json
-{
-  "urls": ["https://example.com/page1", "https://example.com/page2"],
-  "timeout": 10
-}
-```
-
-**Example**:
-```bash
-curl -X POST "http://localhost:8000/api/content/fetch-multiple" \
-  -H "Content-Type: application/json" \
-  -d '{"urls": ["https://example.com/article1", "https://example.com/article2"]}'
-```
-
----
-
-## 🐍 Python Client Usage
-
-```python
-import requests
-
-# Text search
-response = requests.get(
-    "http://localhost:8000/api/search/text",
-    params={
-        "q":  tutorial",
-        "region": "us-en",
-        "max_results": 10
-    }
-)
-
-data = response.json()
-print(f"Found {data['results_count']} results")
-
-for result in data['results']:
-    print(f"- {result['title']}: {result['href']}")
-```
-
----
-
-## 🌐 JavaScript/Fetch Usage
-
-```javascript
-// Image search
-fetch('http://localhost:8000/api/search/images?q=nature&size=Large&max_results=20')
-  .then(response => response.json())
-  .then(data => {
-    console.log(`Found ${data.results_count} images`);
-    data.results.forEach(img => {
-      console.log(img.title, img.image);
-    });
-  });
-```
-
----
-
-## 🧪 Testing with cURL
-
-### Text Search
-```bash
-curl -X GET "http://localhost:8000/api/search/text?q=python&max_results=5" \
-  -H "accept: application/json"
-```
-
-### Image Search with Filters
-```bash
-curl -X GET "http://localhost:8000/api/search/images?q=sunset&size=Large&color=Orange" \
-  -H "accept: application/json"
-```
-
-### News Search (Last Week)
-```bash
-curl -X GET "http://localhost:8000/api/search/news?q=AI&timelimit=w&max_results=10" \
-  -H "accept: application/json"
-```
-
----
-
-## 🐳 Docker Deployment
-
-### Using Docker
-
-```bash
-# Build image
-docker build -t ddgs-api .
-
-# Run container
-docker run -p 8000:8000 ddgs-api
-```
-
-### Using Docker Compose
-
-```bash
-# Start service
-docker-compose up -d
-
-# View logs
-docker-compose logs -f
-
-# Stop service
-docker-compose down
-```
-
----
-
-## ⚙️ Configuration
-
-### Environment Variables
-
-Create a `.env` file:
-
-```bash
-HOST=0.0.0.0
-PORT=8000
-LOG_LEVEL=info
-DDGS_TIMEOUT=10
-DDGS_PROXY=  # Optional proxy
-```
-
-### Using Proxy
-
-Modify the DDGS initialization in `main.py`:
-
-```python
-ddgs = DDGS(
-    proxy="socks5h://127.0.0.1:9150",  # Tor browser
-    timeout=10
-)
-```
-
----
-
-## 🔒 Security Features
-
-1. **Input Validation**: Pydantic models validate all inputs
-2. **Rate Limit Handling**: Proper HTTP 429 responses
-3. **Error Handling**: Comprehensive exception handling
-4. **Type Safety**: Full type hints throughout
-5. **Logging**: Request logging for monitoring
-
----
-
-## 📊 Response Format
-
-### Success Response
-
-```json
-{
-  "success": true,
-  "query": "search term",
-  "results_count": 10,
-  "results": [...]
-}
-```
-
-### Error Response
-
-```json
-{
-  "success": false,
-  "error": "Error message",
-  "details": "Additional error details"
-}
-```
-
----
-
-## 🚦 HTTP Status Codes
-
-| Code | Description |
-|------|-------------|
-| 200 | Success |
-| 400 | Bad Request (invalid parameters) |
-| 429 | Rate Limit Exceeded |
-| 504 | Gateway Timeout |
-| 500 | Internal Server Error |
-
----
-
-## 🛠️ Advanced Features
-
-### CORS Configuration
-
-Add CORS middleware for cross-origin requests:
-
-```python
-from.middleware.cors import CORSMiddleware
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-```
-
-### Rate Limiting
-
-Install and add rate limiting:
-
-```bash
-pip install slowapi
-```
-
-```python
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
-
-limiter = Limiter(key_func=get_remote_address)
-app.state.limiter = limiter
-
-@app.get("/api/search/text")
-@limiter.limit("30/minute")
-async def search_text(...):
-    ...
-```
-
----
-
-## 📈 Production Tips
-
-1. **Use multiple workers**:
-   ```bash
-   uvicorn main:app --workers 4 --host 0.0.0.0 --port 8000
-   ```
-
-2. **Set up reverse proxy** (Nginx example):
-   ```nginx
-   location / {
-       proxy_pass http://localhost:8000;
-       proxy_set_header Host $host;
-       proxy_set_header X-Real-IP $remote_addr;
-   }
-   ```
-
-3. **Enable HTTPS** using Certbot/Let's Encrypt
-
-4. **Monitor with logging**:
-   - Use structured logging
-   - Send logs to monitoring service
-
-5. **Use environment-based configuration**
-
----
-
-## 📚 Full Code Files
-
-### Dockerfile
-
-```dockerfile
-FROM python:3.11-slim
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY main.py .
-
-EXPOSE 8000
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
-```
-
-### docker-compose.yml
-
-```yaml
-version: '3.8'
-
-services:
-  ddgs-api:
-    build: .
-    ports:
-      - "8000:8000"
-    environment:
-      - LOG_LEVEL=info
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-```
-
----
-
-## 🔍 Testing the Server
-
-
-### Manual Testing
-
-```bash
-# Health check
-curl http://localhost:8000/health
-
-# API root
-curl http://localhost:8000/
-
-# Text search
-curl "http://localhost:8000/api/search/text?q=test&max_results=3"
-```
-
----
-
-## 🎯 Features Summary
-
-✅ **5 Complete Search Endpoints**
-- Text/Web Search
-- Image Search with filters
-- Video Search with filters
-- News Search
-- Book Search
-
-✅ **Production Ready**
-- Auto-generated API documentation
-- Input validation with Pydantic
-- Comprehensive error handling
-- Logging and monitoring
-- Docker support
-
-✅ **Developer Friendly**
-- Type hints throughout
-- Clear endpoint documentation
-- Example client code
-- Easy to extend
-
----
-
-## 📝 License
-
-MIT License
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
-
----
-
-## 📧 Support
-
-For issues:
-- *Server**: Check the documentation at http://localhost:8000/docs
-- **DDGS Library**: Visit https://pypi.org/project/ddgs/
-
----
-
-## 🎉 Ready to Use!
-
-Your DDGS server is now complete with:
-- Full implementation in `main.py`
-- Test client in `test_client.py`
-- Docker configuration
-- Comprehensive documentation
-- Production-ready features
-
-Start the server and visit http://localhost:8000/docs to explore the interactive API documentation!
+[MIT](LICENSE)
