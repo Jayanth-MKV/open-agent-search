@@ -3,14 +3,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "ddgs_server/app.py",
+      "src": "open_agent_search/app.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "ddgs_server/app.py"
+      "dest": "open_agent_search/app.py"
     }
   ]
 }

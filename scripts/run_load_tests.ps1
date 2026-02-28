@@ -1,7 +1,7 @@
-# DDGS Server - Load Testing Scripts
+# Open Agent Search (OAS) - Load Testing Scripts
 # Quick commands to run various stress tests
 
-Write-Host "=== DDGS Server Load Testing ===" -ForegroundColor Cyan
+Write-Host "=== Open Agent Search Load Testing ===" -ForegroundColor Cyan
 Write-Host ""
 
 # Check if server is running
@@ -12,7 +12,7 @@ try {
 } catch {
     Write-Host "✗ Server is NOT running on http://localhost:8000" -ForegroundColor Red
     Write-Host "Please start the server first:" -ForegroundColor Yellow
-    Write-Host "  uv run ddgs-server" -ForegroundColor White
+    Write-Host "  uv run open-agent-search" -ForegroundColor White
     exit 1
 }
 

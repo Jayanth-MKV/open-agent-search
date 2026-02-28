@@ -98,7 +98,7 @@ async def root(request: Request, response: Response):
 @limiter.limit(rate_limit_config.HEALTH_LIMIT)
 async def health_check(request: Request, response: Response):
     """Health check endpoint"""
-    return {"status": "healthy", "service": "ClawSearch API"}
+    return {"status": "healthy", "service": "Open Agent Search (OAS)"}
 
 
 # Exception handlers
@@ -120,7 +120,7 @@ def main():
     """CLI entry point: start the HTTP API + MCP server."""
     import uvicorn
 
-    uvicorn.run("ddgs_server.app:app", host="0.0.0.0", port=8000)
+    uvicorn.run("open_agent_search.app:app", host="0.0.0.0", port=8000)
 
 
 if __name__ == "__main__":

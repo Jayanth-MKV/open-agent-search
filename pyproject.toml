@@ -3,14 +3,21 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "ddgs-server"
+name = "open-agent-search"
 version = "1.0.0"
 description = "A production-ready metasearch API and MCP server powered by DuckDuckGo"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.12"
 authors = [{ name = "Jayanth-MKV" }]
-keywords = ["ddgs", "duckduckgo", "search", "api", "mcp", "fastapi"]
+keywords = [
+    "open-agent-search",
+    "agent-search",
+    "mcp",
+    "fastapi",
+    "duckduckgo",
+    "openclaw",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Framework :: FastAPI",
@@ -31,14 +38,16 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Jayanth-MKV/ddgs-server"
-Documentation = "https://jayanth-mkv.github.io/ddgs-server/"
-Repository = "https://github.com/Jayanth-MKV/ddgs-server"
-Issues = "https://github.com/Jayanth-MKV/ddgs-server/issues"
+Homepage = "https://github.com/Jayanth-MKV/open-agent-search"
+Documentation = "https://jayanth-mkv.github.io/open-agent-search/"
+Repository = "https://github.com/Jayanth-MKV/open-agent-search"
+Issues = "https://github.com/Jayanth-MKV/open-agent-search/issues"
 
 [project.scripts]
-ddgs-server = "ddgs_server.app:main"
-ddgs-mcp = "ddgs_server.mcp:main"
+open-agent-search = "open_agent_search.app:main"
+oas-server = "open_agent_search.app:main"
+oas-mcp = "open_agent_search.mcp:main"
+openclaw-search = "open_agent_search.mcp:main"
 
 [dependency-groups]
 dev = [
@@ -51,7 +60,7 @@ dev = [
 docs = ["mkdocs-material>=9.6", "mkdocs-minify-plugin>=0.8"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["ddgs_server"]
+packages = ["open_agent_search"]
 
 [tool.ruff]
 target-version = "py312"

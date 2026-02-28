@@ -1,9 +1,9 @@
-site_name: DDGS Server
-site_url: https://jayanth-mkv.github.io/ddgs-server
-site_description: A production-ready metasearch REST API and MCP server powered by DuckDuckGo Search
+site_name: Open Agent Search (OAS)
+site_url: https://jayanth-mkv.github.io/open-agent-search
+site_description: The independent search layer for AI agents. Privacy-first, unfiltered access to knowledge.
 site_author: Jayanth-MKV
-repo_url: https://github.com/Jayanth-MKV/ddgs-server
-repo_name: Jayanth-MKV/ddgs-server
+repo_url: https://github.com/Jayanth-MKV/open-agent-search
+repo_name: Jayanth-MKV/open-agent-search
 edit_uri: edit/main/docs/
 
 copyright: Copyright &copy; 2024–2026 Jayanth-MKV

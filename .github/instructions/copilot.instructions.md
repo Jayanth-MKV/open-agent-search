@@ -1,8 +1,23 @@
 ---
 # description: Describe when these instructions should be loaded
-applyTo: '**' # when provided, instructions will automatically be added to the request context when the pattern matches an attached file
+applyTo: "**" # when provided, instructions will automatically be added to the request context when the pattern matches an attached file
 ---
 
-Our project is a popular open source repositor which will help users in adding search mcp + API in all different ways (http, pip, docker, vercel deploy and more) for better results while coding and also for better search results in all different ways
+# Open Agent Search (OAS)
 
-Keep this in mind while coding and we are using "uv" for managing the virtual environment and also for running the server and also for running the tests
+Our project, **Open Agent Search**, is the definitive open-source search solution for the AI agent ecosystem. Our mission is to provide **unfiltered, agent-neutral access to the world's knowledge**.
+
+## Philosophy & Manners
+
+- **Independence**: We are not bound to any single agent framework (like OpenClaw, LangChain, or AutoGen). We stand independently as the sensory organ for AI.
+- **Privacy & Accuracy**: We prioritize privacy (leveraging DuckDuckGo) and accuracy above all else.
+- **Universal Access**: We support all deployment methods (HTTP, MCP, Pip, Docker, Vercel) to ensure any agent, anywhere, can see the world.
+- **Respect for the Ecosystem**: While we support specific frameworks (like OpenClaw via `openclaw-search`), we maintain our own identity as a foundational tool, not just a plugin.
+
+## Technical Context
+
+- We use **uv** for managing the virtual environment, running the server, and running tests.
+- When suggesting commands, prefer `uv run` over direct python execution.
+- We support OpenClaw integration natively.
+
+Keep this philosophy in mind while coding. We are building the eyes of the AI.

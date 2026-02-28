@@ -1,13 +1,13 @@
 # Contributing
 
-Thanks for your interest in contributing to DDGS Server! This guide will get you up and running.
+Thanks for your interest in contributing to Open Agent Search! This guide will get you up and running.
 
 ## Development Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/Jayanth-MKV/ddgs-server.git
-cd ddgs-server
+git clone https://github.com/Jayanth-MKV/open-agent-search.git
+cd open-agent-search
 
 # Install uv (if you haven't already)
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -20,13 +20,13 @@ uv sync --dev
 
 ```bash
 # HTTP API + MCP
-uv run ddgs-server
+uv run open-agent-search
 
 # With hot reload
-uv run uvicorn ddgs_server.app:app --reload --host 0.0.0.0 --port 8000
+uv run uvicorn open_agent_search.app:app --reload --host 0.0.0.0 --port 8000
 
 # Standalone MCP (stdio)
-uv run ddgs-mcp
+uv run oas-mcp
 ```
 
 ## Running Tests
@@ -66,7 +66,7 @@ uv add --group dev <package>
 
 ## Reporting Issues
 
-Use [GitHub Issues](https://github.com/Jayanth-MKV/ddgs-server/issues). Include:
+Use [GitHub Issues](https://github.com/Jayanth-MKV/open-agent-search/issues). Include:
 
 - Steps to reproduce
 - Expected vs actual behaviour
@@ -74,4 +74,4 @@ Use [GitHub Issues](https://github.com/Jayanth-MKV/ddgs-server/issues). Include:
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [MIT License](https://github.com/Jayanth-MKV/ddgs-server/blob/main/LICENSE).
+By contributing, you agree that your contributions will be licensed under the [MIT License](https://github.com/Jayanth-MKV/open-agent-search/blob/main/LICENSE).

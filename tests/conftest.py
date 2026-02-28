@@ -3,7 +3,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from ddgs_server.app import app
+from open_agent_search.app import app
 
 
 @pytest.fixture(scope="session")
