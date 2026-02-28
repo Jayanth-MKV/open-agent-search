@@ -52,11 +52,17 @@ uv run mkdocs serve
 # Build (output → site/)
 uv run mkdocs build
 
+# Validate built HTML (checks grid card layout + emoji rendering)
+.\scripts\check_docs.ps1
+
 # Manual deploy to gh-pages branch
 uv run mkdocs gh-deploy --force
 ```
 
 **Auto-deploy:** pushing to `main` with changes in `docs/` or `mkdocs.yml` triggers the `Deploy Docs` workflow. It builds and pushes to the `gh-pages` branch automatically.
+
+> **⚠ Do not run a markdown formatter on `docs/`.**  
+> Material for MkDocs grid cards require `    ---` separators with 4-space indentation inside list items. Auto-formatters (Prettier, Markdown All in One) collapse this to 2-space + `***`, breaking the card layout. VS Code format-on-save is disabled for `.md` files via `.vscode/settings.json`, and `.prettierignore` excludes `docs/`. Always run `.\scripts\check_docs.ps1` after editing docs.
 
 **First-time GitHub Pages setup:**
 
