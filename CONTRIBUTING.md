@@ -30,6 +30,8 @@ uv run uvicorn open_agent_search.app:app --reload --host 0.0.0.0 --port 8000
 
 ```bash
 uv run pytest
+
+uv run python -m pytest # for windows
 ```
 
 ## Code Style
