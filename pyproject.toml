@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "open-agent-search"
-version = "1.0.0"
+version = "1.0.2"
 description = "A production-ready metasearch API and MCP server powered by DuckDuckGo"
 readme = "README.md"
 license = { text = "MIT" }
