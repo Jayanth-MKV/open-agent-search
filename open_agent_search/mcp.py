@@ -198,9 +198,7 @@ async def search_everything(
 
 
 @mcp.tool()
-async def fetch_content(
-    url: str, timeout: int = 10, max_length: int = 2000
-) -> Dict[str, Any]:
+async def fetch_content(url: str, timeout: int = 10, max_length: int = 2000) -> Dict[str, Any]:
     """
     Fetch and extract content from a URL with intelligent trimming (non-blocking).
 

@@ -104,9 +104,7 @@ async def health_check(request: Request, response: Response):
 # Exception handlers
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request, exc):
-    return JSONResponse(
-        status_code=exc.status_code, content=ErrorResponse(error=exc.detail).dict()
-    )
+    return JSONResponse(status_code=exc.status_code, content=ErrorResponse(error=exc.detail).dict())
 
 
 @app.exception_handler(Exception)
